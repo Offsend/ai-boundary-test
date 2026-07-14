@@ -1,0 +1,32 @@
+{
+  "_offsend" : {
+    "event" : "beforeSubmitPrompt",
+    "managed" : true,
+    "marker" : "offsend-managed-ai-hook",
+    "version" : 1
+  },
+  "hooks" : {
+    "beforeReadFile" : [
+      {
+        "command" : ".offsend\/hooks\/check-read.sh cursor",
+        "failClosed" : false,
+        "timeout" : 10
+      }
+    ],
+    "beforeShellExecution" : [
+      {
+        "command" : ".offsend\/hooks\/check-shell.sh cursor",
+        "failClosed" : false,
+        "timeout" : 10
+      }
+    ],
+    "beforeSubmitPrompt" : [
+      {
+        "command" : ".offsend\/hooks\/check-prompt.sh cursor soft-block",
+        "failClosed" : false,
+        "timeout" : 10
+      }
+    ]
+  },
+  "version" : 1
+}

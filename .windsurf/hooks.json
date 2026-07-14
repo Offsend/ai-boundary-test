@@ -1,0 +1,16 @@
+{
+  "_offsend" : {
+    "event" : "pre_user_prompt",
+    "managed" : true,
+    "marker" : "offsend-managed-ai-hook",
+    "version" : 1
+  },
+  "hooks" : {
+    "pre_user_prompt" : [
+      {
+        "command" : ".offsend\/hooks\/check-prompt.sh windsurf soft-block",
+        "show_output" : true
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "_offsend" : {
+    "event" : "UserPromptSubmit",
+    "managed" : true,
+    "marker" : "offsend-managed-ai-hook",
+    "version" : 1
+  },
+  "hooks" : {
+    "PreToolUse" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\"$CLAUDE_PROJECT_DIR\"\/.offsend\/hooks\/check-read.sh claude",
+            "timeout" : 10,
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Read"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "\"$CLAUDE_PROJECT_DIR\"\/.offsend\/hooks\/check-shell.sh claude",
+            "timeout" : 10,
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Bash"
+      }
+    ],
+    "UserPromptSubmit" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\"$CLAUDE_PROJECT_DIR\"\/.offsend\/hooks\/check-prompt.sh claude soft-block",
+            "timeout" : 10,
+            "type" : "command"
+          }
+        ]
+      }
+    ]
+  }
+}
